@@ -26,8 +26,9 @@ const rentalSchema = new mongoose.Schema({
     pictures: [
         {
             data: Buffer,
-            contentType: String
-        }
+            contentType: String,
+            url: String
+        },
     ],
     facilities: {
         bedNumber: {

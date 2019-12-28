@@ -40,6 +40,12 @@ getRentals = async (req, res, next) => {
 router.get('/', async (req, res) => {
     try {
         const rentals = await Rental.find();
+        _.map(rentals, rental => {
+            rental.image.url = atob(Buffer.from(rental.image.data, 'base64'));
+            _.map(rental.pictures, picture => {
+                picture.url = atob(Buffer.from(picture.data, 'base64'))
+            });
+        });
         res.json(rentals);
     }catch (e) {
         res.status(500).json({ message: e.message })
@@ -50,7 +56,6 @@ router.get('/aggregate/:token', getRentals, (req, res) => {
     res.json(res.rentals)
 });
 
-//TODO: change response for a single image with atob
 router.get('/image/:id', getRental, (req, res) => {
     try {
         const img = Buffer.from(res.rental.image.data, 'base64');
