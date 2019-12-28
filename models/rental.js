@@ -12,7 +12,8 @@ const rentalSchema = new mongoose.Schema({
     },
     image: {
         data: Buffer,
-        contentType: String
+        contentType: String,
+        url: String,
     },
     location: {
         type: String,
