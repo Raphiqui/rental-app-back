@@ -50,6 +50,7 @@ router.get('/aggregate/:token', getRentals, (req, res) => {
     res.json(res.rentals)
 });
 
+//TODO: change response for a single image with atob
 router.get('/image/:id', getRental, (req, res) => {
     try {
 
@@ -87,6 +88,7 @@ router.post('/', async (req, res) => {
         location: req.body.location,
         description: req.body.description,
         pictures: req.body.pictures,
+        facilities: req.body.facilities,
     });
     try {
         const newRental = await rental.save();
@@ -103,7 +105,8 @@ router.patch('/:id', getRental, async (req, res) => {
     if (req.body.image !== null) {res.rental.image = req.body.image;}
     if (req.body.location !== null) {res.rental.location = req.body.location;}
     if (req.body.description !== null) {res.rental.description = req.body.description;}
-    if (req.body.pictures !== null) {res.rental.pictures = req.body.pictures;}
+    if (!_.isEmpty(req.body.pictures)) {res.rental.pictures = req.body.pictures;}
+    if (!_.isEmpty(req.body.facilities)) {res.rental.facilities = req.body.facilities;}
 
     try {
         const updatedRental = await res.rental.save();
