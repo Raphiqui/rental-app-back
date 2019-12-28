@@ -50,6 +50,7 @@ router.get('/aggregate/:token', getRentals, (req, res) => {
     res.json(res.rentals)
 });
 
+//TODO: change response for a single image with atob
 router.get('/image/:id', getRental, (req, res) => {
     try {
 
