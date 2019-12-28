@@ -82,6 +82,9 @@ router.get('/images/:id', getRental, (req, res) => {
 router.get('/:id', getRental, (req, res) => {
     try {
         res.rental.image.url = atob(Buffer.from(res.rental.image.data, 'base64'));
+        _.map(res.rental.pictures, picture => {
+            picture.url = atob(Buffer.from(picture.data, 'base64'))
+        });
         res.json(res.rental)
     }catch (e) {
         res.status(500).json({ message: e.message })
