@@ -56,7 +56,14 @@ const rentalSchema = new mongoose.Schema({
             timeByFoot: { type: String, required: true },
             timeByBicycle: { type: String, required: true }
         },
-    }
+    },
+    RentingDates: [
+        {
+            userId: { type: String, required: true },
+            from: { type: String, required: true },
+            to: { type: String, required: true }
+        },
+    ]
 });
 
 module.exports = mongoose.model('Rental', rentalSchema);
