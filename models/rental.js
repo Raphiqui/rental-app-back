@@ -10,6 +10,10 @@ const rentalSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
+    pricePerDay: {
+        type: Number,
+        required: true
+    },
     image: {
         data: Buffer,
         contentType: String,
@@ -56,7 +60,14 @@ const rentalSchema = new mongoose.Schema({
             timeByFoot: { type: String, required: true },
             timeByBicycle: { type: String, required: true }
         },
-    }
+    },
+    rentingDates: [
+        {
+            userId: { type: String, required: true },
+            from: { type: String, required: true },
+            to: { type: String, required: true }
+        },
+    ]
 });
 
 module.exports = mongoose.model('Rental', rentalSchema);
