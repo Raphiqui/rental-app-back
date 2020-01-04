@@ -10,6 +10,10 @@ const rentalSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
+    pricePerDay: {
+        type: Number,
+        required: true
+    },
     image: {
         data: Buffer,
         contentType: String,
