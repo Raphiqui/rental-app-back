@@ -101,6 +101,7 @@ router.post('/', async (req, res) => {
         description: req.body.description,
         pictures: req.body.pictures,
         facilities: req.body.facilities,
+        rentingDates: req.body.rentingDates,
     });
     try {
         const newRental = await rental.save();
@@ -119,6 +120,7 @@ router.patch('/:id', getRental, async (req, res) => {
     if (req.body.description !== null) {res.rental.description = req.body.description;}
     if (!_.isEmpty(req.body.pictures)) {res.rental.pictures = req.body.pictures;}
     if (!_.isEmpty(req.body.facilities)) {res.rental.facilities = req.body.facilities;}
+    if (!_.isEmpty(req.body.rentingDates)) {res.rental.rentingDates = req.body.rentingDates;}
 
     try {
         const updatedRental = await res.rental.save();

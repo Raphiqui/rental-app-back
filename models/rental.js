@@ -57,7 +57,7 @@ const rentalSchema = new mongoose.Schema({
             timeByBicycle: { type: String, required: true }
         },
     },
-    RentingDates: [
+    rentingDates: [
         {
             userId: { type: String, required: true },
             from: { type: String, required: true },
