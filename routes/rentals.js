@@ -96,6 +96,7 @@ router.post('/', async (req, res) => {
     const rental = new Rental({
         name: req.body.name,
         isAvailable: req.body.isAvailable,
+        pricePerDay: req.body.pricePerDay,
         image: req.body.image,
         location: req.body.location,
         description: req.body.description,
@@ -115,6 +116,7 @@ router.patch('/:id', getRental, async (req, res) => {
 
     if (req.body.name !== null) {res.rental.name = req.body.name;}
     if (req.body.isAvailable !== null) {res.rental.isAvailable = req.body.isAvailable;}
+    if (req.body.pricePerDay !== null) {res.rental.pricePerDay = req.body.pricePerDay;}
     if (req.body.image !== null) {res.rental.image = req.body.image;}
     if (req.body.location !== null) {res.rental.location = req.body.location;}
     if (req.body.description !== null) {res.rental.description = req.body.description;}
